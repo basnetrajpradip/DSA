@@ -76,7 +76,7 @@ void displayList(struct ListNode *head) {
   }
 }
 
-void InsertLinkedList(struct ListNode **head, int data, int position) {
+void InsertIntoLinkedList(struct ListNode **head, int data, int position) {
   int k = 1;
   struct ListNode *p, *q, *newNode;
 
