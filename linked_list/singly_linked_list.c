@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Singly linked list structure
+// Structure for singly linked list node.
 struct ListNode {
   int data;
   struct ListNode *next;
