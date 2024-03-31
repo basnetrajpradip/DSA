@@ -14,7 +14,7 @@ int ListLength(struct ListNode *head);
 void displayList(struct ListNode *head);
 
 // Insert new node at the specified position of the list
-void InsertLinkedList(struct ListNode **head, int data, int position);
+void InsertIntoLinkedList(struct ListNode **head, int data, int position);
 
 // Delete node from the linked list
 void DeleteNodeFromLinkedList(struct ListNode **head, int position);
@@ -28,9 +28,9 @@ int main() {
   struct ListNode *head = NULL;
 
   // Inserting nodes at the specified position of the list
-  InsertLinkedList(&head, 5, 1);
-  InsertLinkedList(&head, 19, 2);
-  InsertLinkedList(&head, 45, 3);
+  InsertIntoLinkedList(&head, 5, 1);
+  InsertIntoLinkedList(&head, 19, 2);
+  InsertIntoLinkedList(&head, 45, 3);
 
   // printing details of the list
   printf("Length of the list is: %d\n", ListLength(head));
