@@ -83,7 +83,7 @@ void displayList(struct ListNode *head) {
 
 void insertIntoLinkedList(struct ListNode **head, int data, int position) {
   int k = 1;
-  struct ListNode *p, *q, *newNode;
+  struct ListNode *temp1, *temp2, *newNode;
 
   newNode = (struct ListNode *)malloc(sizeof(struct ListNode));
 
@@ -93,56 +93,56 @@ void insertIntoLinkedList(struct ListNode **head, int data, int position) {
   }
 
   newNode->data = data;
-  p = *head;
+  temp1 = *head;
 
   // Inserting a ndoe at the begining
   if (position == 1) {
-    newNode->next = p;
+    newNode->next = temp1;
     *head = newNode;
   } else {
     // Traverse the list until the position where we want to insert
-    while ((p != NULL) && (k < position)) {
+    while ((temp1 != NULL) && (k < position)) {
       k++;
-      q = p;
-      p = p->next;
+      temp2 = temp1;
+      temp1 = temp1->next;
     }
 
-    q->next = newNode;
-    newNode->next = p;
+    temp2->next = newNode;
+    newNode->next = temp1;
   }
 }
 
 void deleteNodeFromLinkedList(struct ListNode **head, int position) {
   int k = 1;
-  struct ListNode *p, *q;
+  struct ListNode *temp1, *temp2;
   if (*head == NULL) {
     printf("List is Empty.\n");
     return;
   }
 
-  p = *head;
+  temp1 = *head;
 
   // Deleting a node at the begining
   if (position == 1) {
     *head = (*head)->next;
-    free(p);
+    free(temp1);
     return;
   }
 
   else {
     // Traverse the list until arriving at the position from which we want to
     // delete
-    while ((p->next != NULL) && (k < position)) {
+    while ((temp1->next != NULL) && (k < position)) {
       k++;
-      q = p;
-      p = p->next;
+      temp2 = temp1;
+      temp1 = temp1->next;
     }
     if (k != position) {
       printf("Position doesn't exist\n");
       return;
     } else {
-      q->next = p->next;
-      free(p);
+      temp2->next = temp1->next;
+      free(temp1);
     }
   }
 }
