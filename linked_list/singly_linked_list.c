@@ -42,7 +42,7 @@ int main() {
   displayList(head);
 
   // Deleting node position that doesn't exist.
-  deleteNodeFromLinkedList(&head, 5);
+  deleteNodeFromLinkedList(&head, 4);
   printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 
@@ -132,12 +132,12 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
   else {
     // Traverse the list until arriving at the position from which we want to
     // delete
-    while ((p != NULL) && (k < position)) {
+    while ((p->next != NULL) && (k < position)) {
       k++;
       q = p;
       p = p->next;
     }
-    if (p == NULL) {
+    if (k != position) {
       printf("Position doesn't exist\n");
       return;
     } else {
