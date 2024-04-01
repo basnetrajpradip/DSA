@@ -38,7 +38,7 @@ int main() {
   insertIntoLinkedList(&head, 5, 1);
   insertIntoLinkedList(&head, 45, 2);
   displayList(head);
-  deleteNodeFromLinkedList(&head, 4);
+  deleteNodeFromLinkedList(&head, 5);
   displayList(head);
 }
 
@@ -115,6 +115,7 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
     }
     if (k != position - 1) {
       printf("Position doesn't exist.");
+      return;
     }
     temp2 = temp1->prev;
     temp2->next = temp1->next;
