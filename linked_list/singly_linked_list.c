@@ -8,19 +8,19 @@ struct ListNode {
 };
 
 // Count the length of the list
-int ListLength(struct ListNode *head);
+int listLength(struct ListNode *head);
 
 // Display the linked list
 void displayList(struct ListNode *head);
 
 // Insert new node at the specified position of the list
-void InsertIntoLinkedList(struct ListNode **head, int data, int position);
+void insertIntoLinkedList(struct ListNode **head, int data, int position);
 
 // Delete node from the linked list
-void DeleteNodeFromLinkedList(struct ListNode **head, int position);
+void deleteNodeFromLinkedList(struct ListNode **head, int position);
 
 // Delete Linked list
-void DeleteLinkedList(struct ListNode **head);
+void deleteLinkedList(struct ListNode **head);
 
 // Main function
 int main() {
@@ -28,26 +28,26 @@ int main() {
   struct ListNode *head = NULL;
 
   // Inserting nodes at the specified position of the list
-  InsertIntoLinkedList(&head, 5, 1);
-  InsertIntoLinkedList(&head, 19, 2);
-  InsertIntoLinkedList(&head, 45, 3);
+  insertIntoLinkedList(&head, 5, 1);
+  insertIntoLinkedList(&head, 19, 2);
+  insertIntoLinkedList(&head, 45, 3);
 
   // printing details of the list
-  printf("Length of the list is: %d\n", ListLength(head));
+  printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 
   // Deleting node from the list and displaying new info
-  DeleteNodeFromLinkedList(&head, 2);
-  printf("Length of the list is: %d\n", ListLength(head));
+  deleteNodeFromLinkedList(&head, 2);
+  printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 
   // Deleting the linked list and verifying it.
-  DeleteLinkedList(&head);
-  printf("Length of the list is: %d\n", ListLength(head));
+  deleteLinkedList(&head);
+  printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 };
 
-int ListLength(struct ListNode *head) {
+int listLength(struct ListNode *head) {
   struct ListNode *current = head;
   int count = 0;
 
@@ -76,7 +76,7 @@ void displayList(struct ListNode *head) {
   }
 }
 
-void InsertIntoLinkedList(struct ListNode **head, int data, int position) {
+void insertIntoLinkedList(struct ListNode **head, int data, int position) {
   int k = 1;
   struct ListNode *p, *q, *newNode;
 
@@ -107,7 +107,7 @@ void InsertIntoLinkedList(struct ListNode **head, int data, int position) {
   }
 }
 
-void DeleteNodeFromLinkedList(struct ListNode **head, int position) {
+void deleteNodeFromLinkedList(struct ListNode **head, int position) {
   int k = 1;
   struct ListNode *p, *q;
   if (*head == NULL) {
@@ -141,7 +141,7 @@ void DeleteNodeFromLinkedList(struct ListNode **head, int position) {
   }
 }
 
-void DeleteLinkedList(struct ListNode **head) {
+void deleteLinkedList(struct ListNode **head) {
   struct ListNode *auxilaryNode, *iterator;
   iterator = *head;
   while (iterator) {
