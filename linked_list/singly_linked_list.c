@@ -41,6 +41,11 @@ int main() {
   printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 
+  // Deleting node position that doesn't exist.
+  deleteNodeFromLinkedList(&head, 5);
+  printf("Length of the list is: %d\n", listLength(head));
+  displayList(head);
+
   // Deleting the linked list and verifying it.
   deleteLinkedList(&head);
   printf("Length of the list is: %d\n", listLength(head));
@@ -60,7 +65,7 @@ int listLength(struct ListNode *head) {
 
 void displayList(struct ListNode *head) {
   if (head == NULL) {
-    printf("The List is Empty.");
+    printf("The List is Empty.\n");
     return;
   } else {
     struct ListNode *current = head;
@@ -111,7 +116,7 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
   int k = 1;
   struct ListNode *p, *q;
   if (*head == NULL) {
-    printf("List is Empty");
+    printf("List is Empty.\n");
     return;
   }
 
@@ -133,7 +138,8 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
       p = p->next;
     }
     if (p == NULL) {
-      printf("Position doesn't exist");
+      printf("Position doesn't exist\n");
+      return;
     } else {
       q->next = p->next;
       free(p);
