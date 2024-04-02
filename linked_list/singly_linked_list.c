@@ -148,12 +148,12 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
 }
 
 void deleteLinkedList(struct ListNode **head) {
-  struct ListNode *auxilaryNode, *iterator;
-  iterator = *head;
-  while (iterator) {
-    auxilaryNode = iterator->next;
-    free(iterator);
-    iterator = auxilaryNode;
+  struct ListNode *temp, *current;
+  current = *head;
+  while (current != NULL) {
+    temp = current->next;
+    free(current);
+    current = temp;
   }
 
   *head = NULL;
