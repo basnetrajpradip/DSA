@@ -14,31 +14,42 @@ void insertIntoLinkedList(struct ListNode **head, int data, int position);
 // Delete node from the specified position of the list.
 void deleteNodeFromLinkedList(struct ListNode **head, int position);
 
-void displayList(struct ListNode *head) {
-  if (head == NULL) {
-    printf("The List is Empty.");
-    return;
-  } else {
-    struct ListNode *current = head;
-    int listData;
-    printf("The linked list is as follows:\n");
-    while (current != NULL) {
-      listData = current->data;
-      printf("%d\t", listData);
-      current = current->next;
-    }
-    printf("\n");
-    return;
-  }
-}
+// Display the linked list
+void displayList(struct ListNode *head);
+
+// Count the length of the linked list
+int listLength(struct ListNode *head);
+
+// Delete the linked list
+void deleteLinkedList(struct ListNode **head);
 
 // Main function
 int main() {
+
   struct ListNode *head;
+
+  // Inserting nodes at the specified position of the list
   insertIntoLinkedList(&head, 5, 1);
-  insertIntoLinkedList(&head, 45, 2);
+  insertIntoLinkedList(&head, 19, 2);
+  insertIntoLinkedList(&head, 45, 3);
+
+  // printing details of the list
+  printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
-  deleteNodeFromLinkedList(&head, 5);
+
+  // Deleting node from the list and displaying new info
+  deleteNodeFromLinkedList(&head, 2);
+  printf("Length of the list is: %d\n", listLength(head));
+  displayList(head);
+
+  // Deleting node position that doesn't exist.
+  deleteNodeFromLinkedList(&head, 4);
+  printf("Length of the list is: %d\n", listLength(head));
+  displayList(head);
+
+  // Deleting the linked list and verifying it.
+  deleteLinkedList(&head);
+  printf("Length of the list is: %d\n", listLength(head));
   displayList(head);
 }
 
@@ -89,14 +100,14 @@ void insertIntoLinkedList(struct ListNode **head, int data, int position) {
 }
 
 void deleteNodeFromLinkedList(struct ListNode **head, int position) {
-  struct ListNode *temp1, *temp2;
+  struct ListNode *temp;
   int k = 1;
   if (*head == NULL) {
-    printf("List is empty");
+    printf("List is empty.\n");
     return;
   }
 
-  temp1 = *head;
+  temp = *head;
 
   // Deleting a node at the begining
   if (position == 1) {
@@ -105,25 +116,65 @@ void deleteNodeFromLinkedList(struct ListNode **head, int position) {
     if (*head != NULL) {
       (*head)->prev = NULL;
     }
-    free(temp1);
+    free(temp);
     return;
   } else {
     // Traverse the list until arrives at position to delete.
-    while ((temp1->next != NULL) && (k < position)) {
-      temp1 = temp1->next;
+    while ((temp->next != NULL) && (k < position)) {
+      temp = temp->next;
       k++;
     }
-    if (k != position - 1) {
+
+    if (k != position) {
       printf("Position doesn't exist.");
       return;
     }
-    temp2 = temp1->prev;
-    temp2->next = temp1->next;
 
-    if (temp1->next) {
-      temp1->next->prev = temp2;
+    temp->prev->next = temp->next;
+
+    if (temp->next) {
+      temp->next->prev = temp->prev;
     }
-    free(temp1);
+    free(temp);
     return;
   }
+}
+
+void displayList(struct ListNode *head) {
+  if (head == NULL) {
+    printf("The List is Empty.\n");
+    return;
+  } else {
+    struct ListNode *current = head;
+    int listData;
+    printf("The linked list is as follows:\n");
+    while (current != NULL) {
+      listData = current->data;
+      printf("%d\t", listData);
+      current = current->next;
+    }
+    printf("\n");
+    return;
+  }
+}
+
+int listLength(struct ListNode *head) {
+  struct ListNode *current = head;
+  int count = 0;
+  while (current != NULL) {
+    count++;
+    current = current->next;
+  }
+  return count;
+}
+
+void deleteLinkedList(struct ListNode **head) {
+  struct ListNode *current, *temp;
+  current = *head;
+  while (current != NULL) {
+    temp = current->next;
+    free(current);
+    current = temp;
+  }
+  *head = NULL;
 }
