@@ -13,10 +13,10 @@ void displayStack(struct Node *top);
 // Delete the entire linked list stack.
 void deleteStack(struct Node **top);
 
-// Stack ADT
-
 // Create new node/element of the stack.
 struct Node *createStackNode(int data);
+
+// Stack ADT
 
 // Check if stack is empty
 int isEmpty(struct Node *top);
