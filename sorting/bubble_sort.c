@@ -2,7 +2,7 @@
 
 /*  It is called bubble sort as just like bubbles in water, each element of the
  array bubbles towards it's correct position(towards the end) in each
- iteration. */
+ iteration */
 void bubbleSort(int arr[], int size) {
   int temp, i, j;
   // loop to access elements of array
