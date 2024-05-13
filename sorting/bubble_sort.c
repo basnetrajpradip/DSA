@@ -4,11 +4,11 @@
  array bubbles towards it's correct position(towards the end) in each
  iteration. */
 void bubbleSort(int arr[], int size) {
-  int temp;
+  int temp, i, j;
   // loop to access elements of array
-  for (int i = 0; i < size - 1; i++) {
+  for (i = 0; i < size - 1; i++) {
     // loop to compare array elements
-    for (int j = 0; j < size - i - 1; j++) {
+    for (j = 0; j < size - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         temp = arr[j];
         arr[j] = arr[j + 1];
