@@ -30,7 +30,7 @@ void deleteLinkedList(struct ListNode **head);
 
 // Main function
 int main() {
-  struct ListNode *head;
+  struct ListNode *head = NULL;
 
   // Inserting nodes at the specified position of the list
   insertIntoLinkedList(&head, 5, 1);
@@ -142,7 +142,7 @@ void insertIntoLinkedList(struct ListNode **head, int data, int position) {
   if (*head == NULL || position == 1) {
     insertAtBeginning(head, data);
     return;
-  } else if (position == listLength(*head)) {
+  } else if (position == listLength(*head) + 1) {
     insertAtEnd(head, data);
   } else {
     while ((temp1 != NULL) && k < position) {
