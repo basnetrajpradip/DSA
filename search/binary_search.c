@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+/* It works by dividing array in half and comparing either the element is in
+ * left, right  or middle of the array until it finds the element in the
+ * middle.
+ * Time Complexity: O(log n)
+ * Space Complexity:
+ *       Recursive implementation: O(log n)
+ *       Iterative implementation: O(1)
+ */
+
 int binarySearchRecursive(int arr[], int key, int left, int right) {
   int middle = (left + right) / 2;
 
