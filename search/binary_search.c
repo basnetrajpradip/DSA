@@ -2,7 +2,7 @@
 
 /* It works by dividing array in half and comparing either the element is in
  * left, right  or middle of the array until it finds the element in the
- * middle.
+ * middle.The array must be sorted for binary search to work.
  * Time Complexity: O(log n)
  * Space Complexity:
  *       Recursive implementation: O(log n)
